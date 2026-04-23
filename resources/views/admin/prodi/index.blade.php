@@ -21,6 +21,13 @@
                     </ol>
                 </nav>
             </div>
+
+            <div class="col-md-6 col-sm-12 text-right">
+                    <a class="btn btn-secondary" href="{{url('/admin/prodi/create')}}">
+						Tambah Data Prodi
+					</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -49,7 +56,7 @@
                     <a href="" class="btn btn-warning btn-sm" title="Edit">
                     <i class="fa fa-edit"></i>
                     </a>
-                    <form action="" method="POST" style="display:inline;">
+                    <form action="{{ route('prodi.delete', ['id' => $data->id]) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm"
