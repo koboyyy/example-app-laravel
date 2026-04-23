@@ -59,10 +59,10 @@
                     <td class="table-plus">{{ $index + 1 }}</td>
                     <td>{{$data->nama_jurusan}}</td>
                     <td>
-                    <a href="" class="btn btn-warning btn-sm" title="Edit">
+                    <a href="{{ route('jurusan.edit', ['id' => $data->id]) }}" class="btn btn-warning btn-sm" title="Edit">
                     <i class="fa fa-edit"></i>
                     </a>
-                    <form action="" method="POST" style="display:inline;">
+                    <form action="{{ route('jurusan.delete', ['id' => $data->id]) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm"

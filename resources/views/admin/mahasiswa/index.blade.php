@@ -67,10 +67,10 @@
                     <td>{{$data->jurusan}}</td>
                     <td>{{$data->prodi}}</td>
                     <td>
-                    <a href="" class="btn btn-warning btn-sm" title="Edit">
+                    <a href="{{ route('mahasiswa.edit', ['id' => $data->id]) }}" class="btn btn-warning btn-sm" title="Edit">
                     <i class="fa fa-edit"></i>
                     </a>
-                    <form action="" method="POST" style="display:inline;">
+                    <form action="{{ route('mahasiswa.delete', ['id' => $data->id]) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm"

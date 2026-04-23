@@ -30,12 +30,18 @@ Route::get('/dashboard', [HomeController::class, 'index'])
 Route::get('/admin/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
 Route::get('/admin/mahasiswa/create', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
 Route::post('/admin/mahasiswa', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
-Route::get('/admin/jurusan', [JurusanController::class, 'index']);
+Route::get('/admin/mahasiswa/edit', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
+Route::put('/admin/mahasiswa/update', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
+Route::delete('/admin/mahasiswa/delete', [MahasiswaController::class, 'delete'])->name('mahasiswa.delete');
+Route::get('/admin/jurusan', [JurusanController::class, 'index'])->name('jurusan.index');
 Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name('jurusan.create');
 Route::get('/admin/prodi', [ProdiController::class, 'index']);
 
 Route::post('admin/mahasiswa/store', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
 Route::post('admin/jurusan/store', [JurusanController::class, 'store'])->name('jurusan.store');
+Route::get('admin/jurusan/edit', [JurusanController::class, 'edit'])->name('jurusan.edit');
+Route::put('admin/jurusan/update', [JurusanController::class, 'update'])->name('jurusan.update');
+Route::delete('admin/jurusan/delete', [JurusanController::class, 'delete'])->name('jurusan.delete');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -17,7 +17,32 @@ class JurusanController extends Controller
         return view('admin/mahasiswa/jurusan/create');
     }
 
-       public function store(Request $request)
+    public function edit(Request $request)
+    {
+        $id = $request->query('id');
+        $jurusan = Jurusan::where('id', $id)->firstOrFail();
+        return view('admin/mahasiswa/jurusan/edit', compact('jurusan'));
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'nama_jurusan' => ['required', 'string', 'max:100'],
+        ],
+        [
+            'nama_jurusan.required' => 'Nama jurusan wajib diisi',
+        ]);
+
+        $id = $request->query('id');
+        DB::table('tbl_jurusan')->where('id', $id)->update([
+            'nama_jurusan' => $request->nama_jurusan,
+        ]);
+
+        return redirect()->route('jurusan.index')
+            ->with('success', 'Data berhasil diubah');
+    }
+
+    public function store(Request $request)
     {
         $request->validate([
             'nama_jurusan' => ['required', 'string', 'max:100'],
@@ -32,5 +57,14 @@ class JurusanController extends Controller
 
         return redirect()->route('jurusan.create')
             ->with('success', 'Data berhasil ditambahkan');
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->query('id');
+        DB::table('tbl_jurusan')->where('id', $id)->delete();
+
+        return redirect()->route('jurusan.index')
+            ->with('success', 'Data berhasil dihapus');
     }
 }
