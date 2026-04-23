@@ -85,7 +85,7 @@
 				<div class="form-group row">
 					<label class="col-sm-12 col-md-2 col-form-label">Tanggal Lahir</label>
 					<div class="col-sm-12 col-md-10">
-						<input class="form-control" placeholder="Masukkan Tanggal Lahir" type="date" name="tgl_lahir" value="{{ old('tgl_lahir', $mahasiswa->tgl_lahir) }}">
+						<input class="form-control" placeholder="Masukkan Tanggal Lahir" type="date" name="tgl_lahir" value="{{ old('tgl_lahir', \Carbon\Carbon::parse($mahasiswa->tgl_lahir)->format('Y-m-d') ?? '') }}">
 					</div>
 				</div>
 				<div class="form-group row">

@@ -32,6 +32,6 @@ class Mahasiswa extends Model
     
     // (Opsional) Format tanggal
     protected $casts = [
-        'tgl_lahir' => 'date:Y-m-d',
+        'tgl_lahir' => 'date',
     ];
 }
